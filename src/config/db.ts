@@ -19,10 +19,14 @@ function configureDnsServers() {
 }
 
 export async function connectDB(): Promise<string> {
-  configureDnsServers();
-
-  let uri = env.MONGO_URI;
-  if (!uri) {
+  let uri: string;
+  if (env.USE_EXTERNAL_MONGO) {
+    if (!env.MONGO_URI) {
+      throw new Error("USE_EXTERNAL_MONGO=true requires MONGO_URI");
+    }
+    configureDnsServers();
+    uri = env.MONGO_URI;
+  } else {
     memoryServer = await MongoMemoryServer.create({
       instance: { dbName: "flavorflow" },
     });
