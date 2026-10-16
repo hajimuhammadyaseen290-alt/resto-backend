@@ -256,7 +256,7 @@ export async function maybeSeed() {
     code += 1;
     const placedAt = new Date(Date.now() - opts.minutesAgo * 60 * 1000);
     const channel = opts.channel ?? rand([...channels]);
-    const chosen = opts.forceItems ??
+    const chosen: NonNullable<typeof opts.forceItems> = opts.forceItems ??
       Array.from({ length: 1 + Math.floor(Math.random() * 4) }).map(() => ({
         item: rand(items),
         qty: 1 + Math.floor(Math.random() * 2),

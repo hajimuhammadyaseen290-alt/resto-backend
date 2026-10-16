@@ -9,8 +9,6 @@ export const env = {
   JWT_SECRET: process.env.JWT_SECRET ?? "dev-secret",
   JWT_EXPIRES: process.env.JWT_EXPIRES ?? "7d",
   CORS_ORIGIN: (process.env.CORS_ORIGIN ?? "http://localhost:3000").split(","),
-  MONGO_URI: process.env.MONGO_URI,
-  USE_EXTERNAL_MONGO: process.env.USE_EXTERNAL_MONGO === "true",
 
   // ─── Integration credentials (optional; features auto-mock when missing) ───
   TWILIO_ACCOUNT_SID: str(process.env.TWILIO_ACCOUNT_SID),
