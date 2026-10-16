@@ -8,7 +8,10 @@ export const env = {
   PORT: Number(process.env.PORT ?? 4000),
   JWT_SECRET: process.env.JWT_SECRET ?? "dev-secret",
   JWT_EXPIRES: process.env.JWT_EXPIRES ?? "7d",
-  CORS_ORIGIN: (process.env.CORS_ORIGIN ?? "http://localhost:3000").split(","),
+  CORS_ORIGIN: (
+    process.env.CORS_ORIGIN ??
+    "http://localhost:3000,https://resto-frontend-two.vercel.app"
+  ).split(","),
 
   // ─── Integration credentials (optional; features auto-mock when missing) ───
   TWILIO_ACCOUNT_SID: str(process.env.TWILIO_ACCOUNT_SID),
